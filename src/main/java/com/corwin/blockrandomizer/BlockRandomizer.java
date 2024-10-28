@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
-@Mod(BlockBandomizer.MODID)
+@Mod(BlockRandomizer.MODID)
 public class BlockRandomizer {
     public static final String MODID = "blockrandomizer";
     private static final Logger LOGGER = LogUtils.getLogger();
