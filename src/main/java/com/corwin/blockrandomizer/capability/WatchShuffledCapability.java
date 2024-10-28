@@ -1,19 +1,19 @@
-package com.corwin.blockshuffler.capability;
+package com.corwin.blockrandomizer.capability;
 
 import net.minecraft.nbt.CompoundTag;
 
-public class DelayedShuffledCapability implements IDelayedShuffledCapability {
-    private boolean delayedShuffled;
+public class WatchShuffledCapability implements IWatchShuffledCapability {
+    private boolean shuffled;
     private boolean initialized;
 
     @Override
-    public void setDelayedShuffled(boolean value) {
-        this.delayedShuffled = value;
+    public void setShuffled(boolean value) {
+        this.shuffled = value;
     }
 
     @Override
-    public boolean isDelayedShuffled() {
-        return this.delayedShuffled;
+    public boolean isShuffled() {
+        return this.shuffled;
     }
 
     @Override
