@@ -23,19 +23,19 @@ public class WatchShuffledCapability implements IWatchShuffledCapability {
 
     @Override
     public void initialize() {
-        this.delayedShuffled = false; // Default value
+        this.shuffled = false; // Default value
         this.initialized = true;
     }
 
     // Save to NBT
     public void saveNBTData(CompoundTag nbt) {
-        nbt.putBoolean("DelayedShuffled", this.delayedShuffled);
+        nbt.putBoolean("shuffled", this.shuffled);
         nbt.putBoolean("Initialized", this.initialized);
     }
 
     // Load from NBT
     public void loadNBTData(CompoundTag nbt) {
-        this.delayedShuffled = nbt.getBoolean("DelayedShuffled");
+        this.shuffled = nbt.getBoolean("Shuffled");
         this.initialized = nbt.getBoolean("Initialized");
     }
 }
