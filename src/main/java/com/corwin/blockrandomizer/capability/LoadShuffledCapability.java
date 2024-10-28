@@ -1,6 +1,6 @@
-package com.corwin.blockshuffler.capability;
+package com.corwin.blockrandomizer.capability;
 
-public class ChunkShuffledCapability implements IChunkShuffledCapability {
+public class LoadShuffledCapability implements ILoadShuffledCapability {
     private boolean shuffled = false;
     
     @Override
