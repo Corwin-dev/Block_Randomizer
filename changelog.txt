@@ -1,0 +1,10 @@
+0.5
+  Added delayed blocksetting for unusual blocks
+0.4
+  Removed texture swapping.  
+0.3
+  Stable generation. Trying to implemment texture swapping.
+0.2
+  Made more stable and reliable
+0.1
+  Sometimes barely functional
