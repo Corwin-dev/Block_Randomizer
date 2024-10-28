@@ -34,18 +34,19 @@ public class ChunkHandler {
     @SubscribeEvent
     public static void onChunkLoad(ChunkEvent.Load event) {
         if (!(event.getLevel() instanceof ServerLevel serverLevel)) return;
+        
+        String exeGroupName = "onLoad";
+        if (BlockPoolHandler.getConsolidatedExeTable(exeGroupName).isEmpty()) return;
+        
         ChunkAccess chunkAccess = event.getChunk();
         LevelChunk levelChunk = (LevelChunk) chunkAccess;
 
-        // Check if th3 chunk has already been shuffled
+        // Check if the chunk has already been shuffled
         levelChunk.getCapability(CapabilityHandler.LOAD_SHUFFLED_CAPABILITY).ifPresent(cap -> {
         if (cap.isShuffled()) return;
             cap.setShuffled(true);
         });
-        String exeGroupName = "onLoad";
-        // Iterate through each inLoad table and apply shuffle if not empty
-        if (TableHandler.getConsolidatedExeTable(exeGroupName).isEmpty()) return;
-
+        
         LOGGER.info("Chunk Shuffler: Processing group '{}' for chunk load event", exeGroupName);
         shuffleChunkBlocks(serverLevel, chunkAccess, exeGroupName);
     }
