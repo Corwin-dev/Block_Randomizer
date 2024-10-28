@@ -1,4 +1,4 @@
-package com.corwin.blockshuffler;
+package com.corwin.blockrandomizer;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +12,7 @@ import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
 
-@Mod.EventBusSubscriber(modid = BlockShuffler.MODID)
+@Mod.EventBusSubscriber(modid = BlockRandomizer.MODID)
 public class PlayerEventHandler {
     private static final Logger LOGGER = LogUtils.getLogger();
     
