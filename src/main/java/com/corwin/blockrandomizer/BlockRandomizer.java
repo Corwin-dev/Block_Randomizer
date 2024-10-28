@@ -34,7 +34,7 @@ public class BlockRandomizer {
         if (event.getLevel() instanceof ServerLevel level) {
             LOGGER.info("Block Randomizer: World generation detected on server side.");
             // Initialize tables dynamically
-            TableHandler.initializeBlockGroups(level);
+            BlockPoolHandler.initializeBlockGroups(level);
         }
     }
 
@@ -44,7 +44,7 @@ public class BlockRandomizer {
         if (event.getLevel() instanceof ServerLevel level) {
             LOGGER.info("Block Randomizer: World loading on server side.");
             // Load each group’s block table from JSON
-            TableHandler.loadBlockGroups(level);
+            BlockPoolHandler.loadBlockGroups(level);
         }
     }
 }
