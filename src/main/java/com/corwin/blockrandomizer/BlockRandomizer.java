@@ -1,4 +1,4 @@
-package com.corwin.blockshuffler;
+package com.corwin.blockrandomizer;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.server.level.ServerLevel;
@@ -13,26 +13,26 @@ import net.minecraftforge.common.MinecraftForge;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
-@Mod(BlockShuffler.MODID)
-public class BlockShuffler {
-    public static final String MODID = "blockshuffler";
+@Mod(BlockBandomizer.MODID)
+public class BlockRandomizer {
+    public static final String MODID = "blockrandomizer";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     // Mod Initialization
-    public BlockShuffler() {
-        LOGGER.info("Block Shuffler: Initialization started");
+    public BlockRandomizer() {
+        LOGGER.info("Block Randomizer: Initialization started");
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
 
-        LOGGER.info("Block Shuffler: Initialization complete");
+        LOGGER.info("Block Randomizer: Initialization complete");
     }
 
     // World is generating, setup and shuffle the block tables
     @SubscribeEvent
     public void onWorldGen(LevelEvent.CreateSpawnPosition event) {
         if (event.getLevel() instanceof ServerLevel level) {
-            LOGGER.info("Block Shuffler: World generation detected on server side.");
+            LOGGER.info("Block Randomizer: World generation detected on server side.");
             // Initialize tables dynamically
             TableHandler.initializeBlockGroups(level);
         }
@@ -42,7 +42,7 @@ public class BlockShuffler {
     @SubscribeEvent
     public void onWorldLoad(LevelEvent.Load event) {
         if (event.getLevel() instanceof ServerLevel level) {
-            LOGGER.info("Block Shuffler: World loading on server side.");
+            LOGGER.info("Block Randomizer: World loading on server side.");
             // Load each group’s block table from JSON
             TableHandler.loadBlockGroups(level);
         }
