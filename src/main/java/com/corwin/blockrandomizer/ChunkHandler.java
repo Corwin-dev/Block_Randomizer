@@ -1,6 +1,6 @@
-package com.corwin.blockshuffler;
+package com.corwin.blockrandomizer;
 
-import com.corwin.blockshuffler.capability.CapabilityHandler;
+import com.corwin.blockrandomizer.capability.CapabilityHandler;
 import net.minecraft.core.BlockPos;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -26,8 +26,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
-@Mod.EventBusSubscriber(modid = BlockShuffler.MODID)
-public class WorldGenerationHandler {
+@Mod.EventBusSubscriber(modid = BlockRandomizer.MODID)
+public class ChunkHandler {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     // Standard block shuffling event when the chunk loads
