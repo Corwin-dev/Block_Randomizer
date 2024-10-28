@@ -38,7 +38,7 @@ public class ChunkHandler {
         LevelChunk levelChunk = (LevelChunk) chunkAccess;
 
         // Check if th3 chunk has already been shuffled
-        levelChunk.getCapability(CapabilityHandler.CHUNK_SHUFFLED_CAPABILITY).ifPresent(cap -> {
+        levelChunk.getCapability(CapabilityHandler.LOAD_SHUFFLED_CAPABILITY).ifPresent(cap -> {
         if (cap.isShuffled()) return;
             cap.setShuffled(true);
         });
@@ -51,8 +51,11 @@ public class ChunkHandler {
     }
 
     // Delayed shuffling for blocks that cause cascading updates or something, idk, it just works.
-    //disabled @SubscribeEvent
+    @SubscribeEvent
     public static void onChunkWatch(ChunkWatchEvent.Watch event) {
+        String exeGroupName = "onWatch";
+        if (BlockPoolHandler.getConsolidatedExeTable(exeGroupName).isEmpty()) return;
+        
         ServerLevel serverLevel = (ServerLevel) event.getLevel();
         ChunkAccess chunkAccess = event.getChunk();
         LevelChunk levelChunk = (LevelChunk) chunkAccess;
@@ -64,18 +67,16 @@ public class ChunkHandler {
             cap.setDelayedShuffled(true);
         });
 
-        String exeGroupName = "onWatch";
-        if (TableHandler.getConsolidatedExeTable(exeGroupName).isEmpty()) return;
-
+        
         LOGGER.info("Delayed Chunk Shuffler: Processing group '{}' for chunk watch event", exeGroupName);
         // Force chunk reload if any blocks were changed, for player visibility update
-        //if (shuffleChunkBlocks(serverLevel, chunkAccess, exeGroupName)) {
-            //forceChunkReload(event.getPlayer(), serverLevel, levelChunk);   
-        //}
+        if (shuffleChunkBlocks(serverLevel, chunkAccess, exeGroupName)) {
+            forceChunkReload(event.getPlayer(), serverLevel, levelChunk);   
+        }
     }
 
     // Method to shuffle chunk blocks based on group
-    private static void shuffleChunkBlocks(ServerLevel level, ChunkAccess chunk, String exeGroupName) {
+    private static boolean shuffleChunkBlocks(ServerLevel level, ChunkAccess chunk, String exeGroupName) {
         Boolean result = false;
         for (int x = 0; x < 16; x++) {
             for (int y = level.getMinBuildHeight(); y < level.getMaxBuildHeight(); y++) {
@@ -84,6 +85,7 @@ public class ChunkHandler {
                 }
             }
         }
+        return false;
     }
     // I dont know what this does, ChatGPT needed it
     private static <T extends Comparable<T>> BlockState setPropertyValue(BlockState state, Property<T> property, Comparable<?> value) {
