@@ -51,18 +51,18 @@ public class BlockPoolHandler {
 
     // Runs at startup to hardcode the execution groups
     static {
-        addToExeGroup("exclude", "RedstoneComponentBlocks", TableHandler::isRedstoneComponentBlock);
-        addToExeGroup("exclude", "AirBlocks", TableHandler::isAirBlock);
-        addToExeGroup("exclude", "FireBlocks", TableHandler::isFireBlock);
-        addToExeGroup("exclude", "IndestructibleBlocks", TableHandler::isIndestructibleBlock);
-        addToExeGroup("exclude", "ProblemBlocks", TableHandler::isProblemBlock);
-        addToExeGroup("exclude", "EntityBlocks", TableHandler::isEntityBlock);
-        addToExeGroup("exclude", "MenuBlocks", TableHandler::isMenuBlock);
-        addToExeGroup("onLoad", "AquaticBlocks", TableHandler::isAquaticBlock);
-        addToExeGroup("onLoad", "DelicateObjectBlocks", TableHandler::isDelicateObjectBlock);
-        addToExeGroup("onLoad", "SlabBlocks", TableHandler::isSlabBlock);
-        addToExeGroup("onLoad", "StairBlocks", TableHandler::isStairBlock);
-        addToExeGroup("onLoad", "PlainBlocks", TableHandler::isPlainBlock);
+        addToExeGroup("exclude", "RedstoneComponentBlocks", BlockPoolHandler::isRedstoneComponentBlock);
+        addToExeGroup("exclude", "AirBlocks", BlockPoolHandler::isAirBlock);
+        addToExeGroup("exclude", "FireBlocks", BlockPoolHandler::isFireBlock);
+        addToExeGroup("exclude", "IndestructibleBlocks", BlockPoolHandler::isIndestructibleBlock);
+        addToExeGroup("exclude", "ProblemBlocks", BlockPoolHandler::isProblemBlock);
+        addToExeGroup("exclude", "EntityBlocks", BlockPoolHandler::isEntityBlock);
+        addToExeGroup("exclude", "MenuBlocks", BlockPoolHandler::isMenuBlock);
+        addToExeGroup("onLoad", "AquaticBlocks", BlockPoolHandler::isAquaticBlock);
+        addToExeGroup("onLoad", "DelicateObjectBlocks", BlockPoolHandler::isDelicateObjectBlock);
+        addToExeGroup("onLoad", "SlabBlocks", BlockPoolHandler::isSlabBlock);
+        addToExeGroup("onLoad", "StairBlocks", BlockPoolHandler::isStairBlock);
+        addToExeGroup("onLoad", "PlainBlocks", BlockPoolHandler::isPlainBlock);
     }
 
     // Checks if the given block group is in the queried execution group
