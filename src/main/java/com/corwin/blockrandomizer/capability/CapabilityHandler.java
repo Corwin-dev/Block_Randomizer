@@ -1,4 +1,4 @@
-package com.corwin.blockshuffler.capability;
+package com.corwin.blockrandomizer.capability;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
