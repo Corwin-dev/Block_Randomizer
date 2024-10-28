@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.chunk.LevelChunk;
-import com.corwin.blockrandomizer.BlockShuffler;
+import com.corwin.blockrandomizer.BlockRandomizer;
 
 @Mod.EventBusSubscriber(modid = BlockRandomizer.MODID)
 public class CapabilityHandler {
