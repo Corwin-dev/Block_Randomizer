@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 
 
 @Mod.EventBusSubscriber(modid = BlockRandomizer.MODID)
-public class PlayerEventHandler {
+public class StartToolHandler {
     private static final Logger LOGGER = LogUtils.getLogger();
     
     @SubscribeEvent
