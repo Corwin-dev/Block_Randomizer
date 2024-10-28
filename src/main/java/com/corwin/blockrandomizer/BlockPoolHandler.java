@@ -1,4 +1,4 @@
-package com.corwin.blockshuffler;
+package com.corwin.blockrandomizer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,7 +32,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.BiPredicate;
 
-public class TableHandler {
+public class BlockPoolHandler {
     private static final Map<String, Map<Block, Block>> blockGroups = new HashMap<>();
     private static final Random random = new Random();
     private static final Logger LOGGER = LogUtils.getLogger();
