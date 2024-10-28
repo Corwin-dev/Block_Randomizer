@@ -64,8 +64,8 @@ public class ChunkHandler {
         
         // Check if the chunk has already delayed shuffled
         levelChunk.getCapability(CapabilityHandler.WATCH_SHUFFLED_CAPABILITY).ifPresent(cap -> {
-        if (cap.isDelayedShuffled()) return;
-            cap.setDelayedShuffled(true);
+        if (cap.isShuffled()) return;
+            cap.setShuffled(true);
         });
 
         
