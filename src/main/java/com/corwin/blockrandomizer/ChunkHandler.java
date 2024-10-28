@@ -63,7 +63,7 @@ public class ChunkHandler {
         Boolean doChunkReload = false;
         
         // Check if the chunk has already delayed shuffled
-        levelChunk.getCapability(CapabilityHandler.DELAYED_SHUFFLED_CAPABILITY).ifPresent(cap -> {
+        levelChunk.getCapability(CapabilityHandler.WATCH_SHUFFLED_CAPABILITY).ifPresent(cap -> {
         if (cap.isDelayedShuffled()) return;
             cap.setDelayedShuffled(true);
         });
@@ -97,7 +97,7 @@ public class ChunkHandler {
     private static void updateBlockStateIfDifferent(ServerLevel level, ChunkAccess chunk, int x, int y, int z, String exeGroupName) {
         BlockPos blockPos = chunk.getPos().getBlockAt(x, y, z);
         BlockState originalBlockState = chunk.getBlockState(blockPos);
-        Block newBlock = TableHandler.getConsolidatedExeTable(exeGroupName).getOrDefault(originalBlockState.getBlock(), originalBlockState.getBlock());
+        Block newBlock = BlockPoolHandler.getConsolidatedExeTable(exeGroupName).getOrDefault(originalBlockState.getBlock(), originalBlockState.getBlock());
 
         // Make sure the block needs to change, adjust properties, and replace
         if (!originalBlockState.is(newBlock)) {
