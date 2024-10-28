@@ -9,23 +9,24 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.chunk.LevelChunk;
-import com.corwin.blockshuffler.BlockShuffler;
+import com.corwin.blockrandomizer.BlockShuffler;
 
-@Mod.EventBusSubscriber(modid = BlockShuffler.MODID)
+@Mod.EventBusSubscriber(modid = BlockRandomizer.MODID)
 public class CapabilityHandler {
-    public static final Capability<IChunkShuffledCapability> CHUNK_SHUFFLED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
-    public static final Capability<IDelayedShuffledCapability> DELAYED_SHUFFLED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<ILoadShuffledCapability> LOAD_SHUFFLED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IWatchShuffledCapability> WATCH_SHUFFLED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.register(IChunkShuffledCapability.class);
-        event.register(IDelayedShuffledCapability.class); // Register the new capability
+        event.register(ILoadShuffledCapability.class);
+        event.register(IWatchShuffledCapability.class); // Register the new capability
     }
     
     @SubscribeEvent
     public static void onAttachCapabilities(AttachCapabilitiesEvent<LevelChunk> event) {
         if (!event.getObject().getLevel().isClientSide()) {
-            event.addCapability(new ResourceLocation(BlockShuffler.MODID, "chunk_shuffled"), new ChunkShuffledProvider());
-         }
+            event.addCapability(new ResourceLocation(BlockRandomizer.MODID, "load_shuffled"), new LoadShuffledProvider());
+            event.addCapability(new ResourceLocation(BlockRandomizer.MODID, "watch_shuffled"), new WatchShuffledProvider());
+        }
     }
 }
